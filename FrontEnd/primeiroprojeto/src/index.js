@@ -8,12 +8,15 @@ import TelaCadastroBordados from './TelaCadastroBordados'
 */
 import Login from './screens/Login';
 
+import TelaHome from './Home/TelaHome';
+
 import reportWebVitals from './reportWebVitals';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Login />
+    <App />
   </React.StrictMode>
 );
 

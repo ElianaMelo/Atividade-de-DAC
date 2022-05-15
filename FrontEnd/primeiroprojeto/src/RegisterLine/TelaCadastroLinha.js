@@ -1,6 +1,6 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
-import './App.css';
+
 
 export default class App extends React.Component{
 

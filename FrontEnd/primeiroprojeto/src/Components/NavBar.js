@@ -28,7 +28,10 @@ function NavBar(props) {
                             <a className="nav-link" href="/TelaCadastroLinha">Cadastro de Linhas</a>
                         </li>
                         <li className="NavBarItem">
-                            <a className="nav-link" href="/">About</a>
+                            <a className="nav-link" href="/TelaBordadoSalvo">Bordado Salvo</a>
+                        </li>
+                        <li className="NavBarItem">
+                            <a className="nav-link" href="/TelaLinhaSalva">Linha Salva</a>
                         </li>
 
                     </ul>

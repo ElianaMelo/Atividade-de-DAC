@@ -20,7 +20,8 @@ export default class TelaCadastroBordado extends React.Component {
         <div className="form-group">
           <label className="col-form-label mt-4" htmlFor="nomeCor">Nome do Bordado:</label>
           <input type="text" className="form-control" placeholder="nomeCor" id="nomeCor"
-            value={this.state.nomeBordado} onChange={(e) => { this.setState({ nomeBordado: e.target.value }) }} />
+            value={this.state.nomeBordado} onChange={(e) => 
+            { this.setState({ nomeBordado: e.target.value }) }} />
         </div>
 
         <br />
@@ -31,7 +32,8 @@ export default class TelaCadastroBordado extends React.Component {
         <div className="form-group">
           <fieldset disabled="">
             <input className="form-control" id="disabledInput" type="text"
-              placeholder="Disabled input here..." disabled="" defaultValue={this.state.result} />
+              placeholder="Disabled input here..." disabled="" 
+              defaultValue={this.state.result} />
           </fieldset>
         </div>
       </div>

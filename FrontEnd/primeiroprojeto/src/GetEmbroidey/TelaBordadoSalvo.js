@@ -3,7 +3,6 @@ import 'bootswatch/dist/vapor/bootstrap.css';
 
 import Card from '../Components/Card';
 
-
 export default class TelaBordadoSalvo extends React.Component {
 
     render() {

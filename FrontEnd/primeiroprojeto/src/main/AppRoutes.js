@@ -6,6 +6,7 @@ import TelaCadastroBordados from "../RegisterEmbroidery/TelaCadastroBordados";
 import TelaCadastroLinha from "../RegisterLine/TelaCadastroLinha";
 import TelaBordadoSalvo from "../GetEmbroidey/TelaBordadoSalvo";
 import TelaLinhaSalva from "../GetLine/TelaLinhaSalva";
+import Login from "../screens/Login";
 
 function AppRoutes(){
     return(
@@ -15,6 +16,7 @@ function AppRoutes(){
             <Route component={TelaCadastroLinha} path="/TelaCadastroLinha"/>
             <Route component={TelaBordadoSalvo} path="/TelaBordadoSalvo"/>
             <Route component={TelaLinhaSalva} path="/TelaLinhaSalva"/>
+            <Route component={Login} path="/Login"/>
         </BrowserRouter>
     )
 }

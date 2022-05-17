@@ -4,11 +4,14 @@ import './Login.css';
 import Card from '../Components/Card';
 import FormGroup from '../Components/FormGroup';
 
-export default class Login extends React.Component {
+import {withRouter} from 'react-router-dom';
+
+class Login extends React.Component {
 
     state = {
         email: '',
         password: ''
+
     }
 
     login = () => {
@@ -16,6 +19,17 @@ export default class Login extends React.Component {
         console.log('password:', this.state.password);
 
     }
+
+    logado = () =>{
+
+        if(('monteiro@ifpb.edu.br' === this.state.email)&&('123' === this.state.password )){
+            console.log('Logado com sulcesso!');
+            this.props.history.push('/');
+        }else{
+            alert('Dados incorretos!');
+        }
+    }
+
 
     render() {
         return (
@@ -38,8 +52,8 @@ export default class Login extends React.Component {
                                                         placeholder='Digite a senha'
                                                         value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                                                 </FormGroup>
-                                                <button className='btn btn-success' onClick={this.login}>Logar</button>
-                                                <button className='btn btn-danger'>Cadastrar</button>
+                                                <button className='btn btn-success' onClick={this.logado}>Logar</button>
+                                                <button className='btn btn-danger'>cancel</button>
                                             </fieldset>
                                         </div>
                                     </div>
@@ -62,3 +76,5 @@ export default class Login extends React.Component {
     }
 
 }
+
+export default withRouter(Login);

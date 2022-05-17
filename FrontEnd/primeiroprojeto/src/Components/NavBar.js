@@ -33,6 +33,9 @@ function NavBar(props) {
                         <li className="NavBarItem">
                             <a className="nav-link" href="/TelaLinhaSalva">Linha Salva</a>
                         </li>
+                        <li className="NavBarItem">
+                            <a className="nav-link" href="/Login">Logar</a>
+                        </li>
 
                     </ul>
 

@@ -1,9 +1,7 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 import './App.css';
-import Login from './screens/Login';
-import NavBar from './Components/NavBar';
-import TelaHome from './Home/TelaHome';
+import NavBar from './components/NavBar';
 
 import AppRoutes from './main/AppRoutes';
 

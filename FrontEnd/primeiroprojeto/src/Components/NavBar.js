@@ -16,26 +16,12 @@ function NavBar(props) {
 
                 <div className="collapse navbar-collapse" id="navbarColor01">
                     <ul className="navbar-nav me-auto">
-                        <li className="NavBarItem">
-                            <a className="nav-link active" href="/">Home
-                                <span className="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li className="NavBarItemm">
-                            <a className="nav-link" href="/TelaCadastroBordados">Cadastro de Bordados</a>
-                        </li>
-                        <li className="NavBarItem">
-                            <a className="nav-link" href="/TelaCadastroLinha">Cadastro de Linhas</a>
-                        </li>
-                        <li className="NavBarItem">
-                            <a className="nav-link" href="/TelaBordadoSalvo">Bordado Salvo</a>
-                        </li>
-                        <li className="NavBarItem">
-                            <a className="nav-link" href="/TelaLinhaSalva">Linha Salva</a>
-                        </li>
-                        <li className="NavBarItem">
-                            <a className="nav-link" href="/Login">Logar</a>
-                        </li>
+                        <NavBarItem href="/" label="Home"/>
+                        <NavBarItem href="/TelaCadastroBordados" label="Cadastro de Bordado"/>
+                        <NavBarItem href="/TelaCadastroLinha" label="Cadastro de Linhas"/>
+                        <NavBarItem href="/TelaBordadoSalvo" label="Bordado Salvo"/>
+                        <NavBarItem href="/TelaLinhaSalva" label="Linha Salva"/>
+                        <NavBarItem href="/Login" label="Login"/>
 
                     </ul>
 

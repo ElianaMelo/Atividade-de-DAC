@@ -1,12 +1,12 @@
 import React from "react";
 import {Route, BrowserRouter} from "react-router-dom";
 
-import TelaHome from "../Home/TelaHome";
-import TelaCadastroBordados from "../RegisterEmbroidery/TelaCadastroBordados";
-import TelaCadastroLinha from "../RegisterLine/TelaCadastroLinha";
-import TelaBordadoSalvo from "../GetEmbroidey/TelaBordadoSalvo";
-import TelaLinhaSalva from "../GetLine/TelaLinhaSalva";
-import Login from "../screens/Login";
+import TelaHome from "../screens/home/TelaHome";
+import TelaCadastroBordados from "../screens/registerEmbroidery/TelaCadastroBordados";
+import TelaCadastroLinha from "../screens/registerLine/TelaCadastroLinha";
+import TelaBordadoSalvo from "../screens/getEmbroidey/TelaBordadoSalvo";
+import TelaLinhaSalva from "../screens/getLine/TelaLinhaSalva";
+import Login from "../screens/login/Login";
 
 function AppRoutes(){
     return(

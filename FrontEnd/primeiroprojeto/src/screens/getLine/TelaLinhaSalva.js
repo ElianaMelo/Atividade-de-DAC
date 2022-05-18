@@ -1,7 +1,7 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 
-import Card from '../Components/Card';
+import Card from '../../components/Card';
 
 export default class TelaLinhaSalva extends React.Component {
 

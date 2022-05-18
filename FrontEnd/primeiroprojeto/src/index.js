@@ -3,12 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import App from './App';
-/*
-import TelaCadastroBordados from './TelaCadastroBordados'
-*/
-import Login from './screens/Login';
-
-import TelaHome from './Home/TelaHome';
 
 import reportWebVitals from './reportWebVitals';
 

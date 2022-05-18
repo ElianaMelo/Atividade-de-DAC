@@ -1,8 +1,8 @@
 import React from 'react';
 import './Login.css';
 
-import Card from '../Components/Card';
-import FormGroup from '../Components/FormGroup';
+import Card from "../../components/Card";
+import FormGroup from "../../components/FormGroup";
 
 import {withRouter} from 'react-router-dom';
 

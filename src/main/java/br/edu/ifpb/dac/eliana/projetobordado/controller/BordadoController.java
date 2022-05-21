@@ -17,11 +17,10 @@ import br.edu.ifpb.dac.eliana.projetobordado.dto.BordadoDTO;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Bordado;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Linha;
 import br.edu.ifpb.dac.eliana.projetobordado.servico.BordadoService;
-import br.edu.ifpb.dac.eliana.projetobordado.servico.ConverterService;
 import br.edu.ifpb.dac.eliana.projetobordado.servico.LinhaService;
 
 @RestController
-@RequestMapping("/projetobordado/bordado/")
+@RequestMapping("/projetobordado/bordado")
 public class BordadoController {
 	
 	
@@ -29,29 +28,23 @@ public class BordadoController {
 	private BordadoService bodadoService;
 	@Autowired
 	private LinhaService linhaService;
-	@Autowired
-	private ConverterService converterService;
 	
 	
 	@PostMapping
-	public ResponseEntity bordadoSave(@RequestBody BordadoDTO dto) {
+	public ResponseEntity<Object> bordadoSave(@RequestBody BordadoDTO dto) {
 		try {
-			
-			Bordado bordado = converterService.dtoToBordado(dto);
-			bordado = bodadoService.saveEmbroidery(bordado);
-			dto = converterService.bordadoToDTO(bordado);
-		
-			return new ResponseEntity(dto, HttpStatus.CREATED);
+			Bordado bordadoSalvo = bodadoService.saveEmbroidery(dto.toModel());
+			return new ResponseEntity<Object>(bordadoSalvo.toDto(), HttpStatus.CREATED);
 		
 		}catch (Exception e){
-			return ResponseEntity.badRequest().body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
 	// nome ou objeto do bordado???
 	public void addLinha(int corLinha, Bordado bordado){
-		Linha linha = linhaService.getLine(corLinha);
 		
 		try {
+			Linha linha = linhaService.getLine(corLinha);
 			bodadoService.addLines(linha, bordado);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -97,16 +90,14 @@ public class BordadoController {
 		}
 	}
 	
-	@PutMapping("{id}")
-	public ResponseEntity updateEmbroidery(@PathVariable("id") Long idBordadoAntgo,BordadoDTO dto) {
+	@PutMapping("/{id}")
+	public ResponseEntity updateEmbroidery(@PathVariable("id") Long idBordadoAntgo,@RequestBody BordadoDTO dto) {
 		
 		try {
 			dto.setIdBordado(idBordadoAntgo);
-			Bordado bordadoNovo = converterService.dtoToBordado(dto);
-			bordadoNovo = bodadoService.updateEmbroidery(idBordadoAntgo, bordadoNovo);
-			dto = converterService.bordadoToDTO(bordadoNovo);
+			Bordado bordadoAtualisado = bodadoService.updateEmbroidery(idBordadoAntgo, dto.toModel());
 			
-			return ResponseEntity.ok(dto);
+			return ResponseEntity.ok(bordadoAtualisado.toDto());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			return ResponseEntity.badRequest().body(e.getMessage()) ;

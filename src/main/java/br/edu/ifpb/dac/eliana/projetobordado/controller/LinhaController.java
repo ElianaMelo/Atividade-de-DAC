@@ -35,8 +35,18 @@ public class LinhaController {
 		}
 	}
 
-	public Linha getLinha(int codigoCor) {
-		return linhaService.getLine(codigoCor);
+	@GetMapping("/{codigoCor}")
+	public ResponseEntity<Object> getLinha(@PathVariable("codigoCor") int codigoCor) {
+		try {
+			Linha linha = linhaService.getLine(codigoCor);
+			return ResponseEntity.ok(linha.toDto());
+			
+		}catch(Exception e){
+			if(e instanceof NotFoundException) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			}
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
 	}
 
 	@GetMapping
@@ -46,7 +56,7 @@ public class LinhaController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity updateLinha(@PathVariable("id") Long id, @RequestBody LinhaDTO dto) {
+	public ResponseEntity<Object> updateLinha(@PathVariable("id") Long id, @RequestBody LinhaDTO dto) {
 		try {
 			dto.setIdLinha(id);
 			Linha linhaUpdate = linhaService.updateLine(id, dto.toModel());
@@ -59,11 +69,11 @@ public class LinhaController {
 		}
 	}
 
-	@DeleteMapping("id")
-	public ResponseEntity deleteLinha(@PathVariable("id") int codigoLinha) {
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Object> deleteLinha(@PathVariable("id") Long codigoLinha) {
 		try {
-			linhaService.deleteLine(getLinha(codigoLinha).getIdLinha());
-			return new ResponseEntity(HttpStatus.NO_CONTENT);
+			linhaService.deleteLine(codigoLinha);
+			return new ResponseEntity<Object>(HttpStatus.NO_CONTENT);
 		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}

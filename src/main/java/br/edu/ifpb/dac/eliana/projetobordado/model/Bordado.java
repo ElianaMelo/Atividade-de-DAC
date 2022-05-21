@@ -15,9 +15,12 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import br.edu.ifpb.dac.eliana.projetobordado.dto.BordadoDTO;
+
 @Entity
 @Table(name="bordados")
-public class Bordado {
+public class Bordado implements IModel<BordadoDTO>{
+	
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,6 +32,13 @@ public class Bordado {
 	
 	private List<Linha> linhas;
 	
+	public Bordado(Long idBordado, String nome) {
+		this.idBordado = idBordado;
+		this.nome = nome;
+	}
+	
+	public Bordado() {
+	}
 	
 	public Long getIdBordado() {
 		return idBordado;
@@ -68,6 +78,11 @@ public class Bordado {
 	@Override
 	public String toString() {
 		return "Bordado [nome=" + nome + ", linhas=" + linhas + "]";
+	}
+
+	@Override
+	public BordadoDTO toDto() {
+		return new BordadoDTO(this.idBordado, this.nome);
 	}
 	
 	

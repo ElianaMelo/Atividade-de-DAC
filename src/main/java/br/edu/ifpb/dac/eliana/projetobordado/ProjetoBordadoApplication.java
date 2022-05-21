@@ -24,34 +24,7 @@ public class ProjetoBordadoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		/**
-			LinhaDTO linha1 = new LinhaDTO("rosa", 262);
-			LinhaDTO linha2 = new LinhaDTO("amarelo", 299);
-			LinhaDTO linha3 = new LinhaDTO("verde", 253);
-			LinhaDTO linha4 = new LinhaDTO("violeta", 322);
-			LinhaDTO linha5 = new LinhaDTO("amareloVivo", 208);
-			LinhaDTO linha6 = new LinhaDTO("verdeLoudo", 312);
 		
-			linhaCon.saveLinha(linha1);
-			linhaCon.saveLinha(linha2);
-			linhaCon.saveLinha(linha3);
-			linhaCon.saveLinha(linha4);
-			linhaCon.saveLinha(linha5);
-			linhaCon.saveLinha(linha6);
-			linhaCon.getLinhas();
-		*/
-			
-			linhaCon.deleteLinha(0);
-			
-			/**
-			Linha li = linhaCon.getLinha(208);
-			li.setNomeCor("Amarelo Vivo");
-			linhaCon.updateLinha(li.getIdLinha(),li);
-			
-			System.out.println(linhaCon.getLinha(208));
-		
-		
-		*/
 			
 		// Esta dando erro de tranzação, pois a conexão com o banco finaliza 
 		//apois terminar as consusltas com a linhas 

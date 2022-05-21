@@ -1,7 +1,10 @@
 package br.edu.ifpb.dac.eliana.projetobordado.model;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,7 +33,7 @@ public class Bordado implements IModel<BordadoDTO>{
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	
-	private List<Linha> linhas;
+	private Set<Linha> linhas = new HashSet<>();
 	
 	public Bordado(Long idBordado, String nome) {
 		this.idBordado = idBordado;
@@ -52,13 +55,20 @@ public class Bordado implements IModel<BordadoDTO>{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public List<Linha> getLinhas() {
+	public Set<Linha> getLinhas() {
 		return linhas;
 	}
-	public void setLinhas(List<Linha> linhas) {
+	public void setLinhas(Set<Linha> linhas) {
 		this.linhas = linhas;
 	}
+
+	public void addLinha(Linha linha) {
+		this.linhas.add(linha);
+	}
 	
+	public void deleteLinha(Linha linha) {
+		this.linhas.remove(linha);
+	}
 	
 	@Override
 	public int hashCode() {

@@ -1,11 +1,13 @@
 package br.edu.ifpb.dac.eliana.projetobordado.controller;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,6 +42,7 @@ public class BordadoController {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
+	
 	// nome ou objeto do bordado???
 	public void addLinha(int corLinha, Bordado bordado){
 		
@@ -53,7 +56,7 @@ public class BordadoController {
 	}
 	
 	public void getLines(String nomeBorda) {
-		List<Linha> linhas = bodadoService.getLines(nomeBorda);
+		Set<Linha> linhas = bodadoService.getLines(nomeBorda);
 		for(Linha linha: linhas) {
 			System.out.println(linha);
 		}
@@ -82,12 +85,10 @@ public class BordadoController {
 		return bodadoService.getEmbroidery(nome);
 	}
 	
-	public void getEmbroiderys(){
+	@GetMapping
+	public ResponseEntity<Iterable<Bordado>> getEmbroiderys(){
 		Iterable<Bordado> bordados = bodadoService.getEmbroiderys();
-		
-		for(Bordado bordado: bordados){
-			System.out.println(bordado);
-		}
+		return ResponseEntity.ok(bordados);
 	}
 	
 	@PutMapping("/{id}")

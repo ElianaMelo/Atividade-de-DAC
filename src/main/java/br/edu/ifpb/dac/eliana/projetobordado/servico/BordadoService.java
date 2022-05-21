@@ -1,6 +1,7 @@
 package br.edu.ifpb.dac.eliana.projetobordado.servico;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +31,7 @@ public class BordadoService {
 	
 	//pensar se vai passar o objeto linha ou vai passa o id !!!
 	public Boolean addLines(Linha linha, Bordado bordado) throws Exception {
-		List<Linha> lines = getLines(bordado.getNome());
-		lines.add(linha);
-		bordado.setLinhas(lines);
+		bordado.addLinha(linha);
 		Bordado brdd = updateEmbroidery(bordado.getIdBordado(), bordado);
 		if(brdd != null) {
 			repositoryEmbroidery.save(brdd);
@@ -42,14 +41,14 @@ public class BordadoService {
 		
 	}
 	
-	public List<Linha> getLines(String nomeBordado){
+	public Set<Linha> getLines(String nomeBordado){
 		Bordado emb = getEmbroidery(nomeBordado);
 		return emb.getLinhas();
 	}
 	
 	public Linha getLineEmbroidery(String nomeBordado, int codigoCor){
 		Bordado emb = getEmbroidery(nomeBordado);
-		List<Linha> linhas = emb.getLinhas();
+		Set<Linha> linhas = emb.getLinhas();
 		for(Linha linha:linhas) {
 			if(linha.getCodigoCor() == codigoCor) {
 				return linha;
@@ -67,7 +66,6 @@ public class BordadoService {
 		}else {
 			linhaAntiga.setNomeCor(linhaNova.getNomeCor());
 			linhaAntiga.setCodigoCor(linhaNova.getCodigoCor());
-			deleteLines(linhaNova, bordado);
 			addLines(linhaAntiga, bordado);
 			updateEmbroidery(bordado.getIdBordado(), bordado);
 			return true;
@@ -76,7 +74,7 @@ public class BordadoService {
 	}
 	
 	public void deleteLines(Linha linha, Bordado bordado) throws Exception  {
-		List<Linha> lines = getLines(bordado.getNome());
+		Set<Linha> lines = getLines(bordado.getNome());
 		for(Linha lin: lines) {
 			if(lin.equals(linha)) {
 				lines.remove(lin);
@@ -99,7 +97,6 @@ public class BordadoService {
 		}else {
 			brddAntigo.setNome(bordadoNovo.getNome());
 			brddAntigo.setLinhas(bordadoNovo.getLinhas());
-			deleteEmbroidery(bordadoNovo.getIdBordado());
 			
 			return saveEmbroidery(brddAntigo);
 		}

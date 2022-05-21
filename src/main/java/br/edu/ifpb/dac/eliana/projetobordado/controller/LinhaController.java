@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -11,71 +12,61 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpb.dac.eliana.projetobordado.NotFoundException;
+import br.edu.ifpb.dac.eliana.projetobordado.dto.LinhaDTO;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Linha;
-import br.edu.ifpb.dac.eliana.projetobordado.model.dto.LinhaDTO;
-import br.edu.ifpb.dac.eliana.projetobordado.model.servico.ConverterService;
-import br.edu.ifpb.dac.eliana.projetobordado.model.servico.LinhaService;
+import br.edu.ifpb.dac.eliana.projetobordado.servico.LinhaService;
 
 @RestController
 @RequestMapping("/projetobordado/linha")
 public class LinhaController {
-	
+
 	@Autowired
 	private LinhaService linhaService;
-	@Autowired
-	private ConverterService converterService;
-	
+
 	@PostMapping
-	public ResponseEntity saveLinha(@RequestBody LinhaDTO dto) {
+	public ResponseEntity<Object> saveLinha(@RequestBody LinhaDTO dto) {
 		try {
-			Linha linha = converterService.dtoToLinha(dto);
-			linha = linhaService.saveLine(linha);
-			dto = converterService.linhaToDTO(linha);
-			
-			return new ResponseEntity(dto,HttpStatus.CREATED);
-			
+			Linha linhaSave = linhaService.saveLine(dto.toModel());
+			return new ResponseEntity<Object>(linhaSave.toDto(), HttpStatus.CREATED);
+
 		} catch (Exception e) {
-			
-			return ResponseEntity.badRequest().body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 	}
-	
-	public Linha  getLinha(int codigoCor) {
+
+	public Linha getLinha(int codigoCor) {
 		return linhaService.getLine(codigoCor);
 	}
-	
-	public void getLinhas() {
+
+	@GetMapping
+	public ResponseEntity<Iterable<Linha>> getLinhas() {
 		Iterable<Linha> linhas = linhaService.getLines();
-		
-		for( Linha li:linhas) {
-			System.out.println(li.toString());
-		}
+		return ResponseEntity.ok(linhas);
 	}
-	
-	@PutMapping("{id}")
-	public ResponseEntity updateLinha(@PathVariable("id") Long idLinha, LinhaDTO dto) {
+
+	@PutMapping("/{id}")
+	public ResponseEntity updateLinha(@PathVariable("id") Long id, @RequestBody LinhaDTO dto) {
 		try {
-			dto.setIdLinha(idLinha);
-			Linha linha = converterService.dtoToLinha(dto);
-			linha = linhaService.updateLine(idLinha,linha);
-			dto = converterService.linhaToDTO(linha);
-			
-			return ResponseEntity.ok(dto);
+			dto.setIdLinha(id);
+			Linha linhaUpdate = linhaService.updateLine(id, dto.toModel());
+			return ResponseEntity.ok(linhaUpdate.toDto());
 		} catch (Exception e) {
-			
+			if(e instanceof NotFoundException) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			}
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
+
 	@DeleteMapping("id")
 	public ResponseEntity deleteLinha(@PathVariable("id") int codigoLinha) {
 		try {
 			linhaService.deleteLine(getLinha(codigoLinha).getIdLinha());
 			return new ResponseEntity(HttpStatus.NO_CONTENT);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
-	
-	
 
 }

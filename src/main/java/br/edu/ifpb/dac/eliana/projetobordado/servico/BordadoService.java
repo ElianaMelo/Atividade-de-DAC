@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.eliana.projetobordado.model.servico;
+package br.edu.ifpb.dac.eliana.projetobordado.servico;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.ifpb.dac.eliana.projetobordado.model.Bordado;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Linha;
-import br.edu.ifpb.dac.eliana.projetobordado.model.repository.BordadoRepository;
+import br.edu.ifpb.dac.eliana.projetobordado.repository.BordadoRepository;
 
 @Service
 public class BordadoService {

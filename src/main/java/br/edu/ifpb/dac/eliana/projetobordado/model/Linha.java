@@ -9,9 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import br.edu.ifpb.dac.eliana.projetobordado.dto.LinhaDTO;
+
 @Entity
 @Table(name="linhas")
-public class Linha {
+public class Linha implements IModel<LinhaDTO>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,6 +23,12 @@ public class Linha {
 	private int codigoCor;
 	
 	public Linha(String nomeCor, int codigoCor) {
+		this.nomeCor = nomeCor;
+		this.codigoCor = codigoCor;
+	}
+	
+	public Linha(Long idLinha, String nomeCor, int codigoCor) {
+		this.idLinha = idLinha;
 		this.nomeCor = nomeCor;
 		this.codigoCor = codigoCor;
 	}
@@ -69,8 +77,10 @@ public class Linha {
 	public String toString() {
 		return "Linha [nomeCor=" + nomeCor + ", codigoCor=" + codigoCor + "]";
 	}
-	
-	
-	
+
+	@Override
+	public LinhaDTO toDto() {
+		return new LinhaDTO(this.idLinha, this.nomeCor, this.codigoCor);
+	}
 
 }

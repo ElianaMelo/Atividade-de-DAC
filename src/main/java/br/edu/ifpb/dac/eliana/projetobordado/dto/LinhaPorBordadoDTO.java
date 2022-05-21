@@ -1,4 +1,4 @@
-package br.edu.ifpb.dac.eliana.projetobordado.model.dto;
+package br.edu.ifpb.dac.eliana.projetobordado.dto;
 
 import java.util.List;
 

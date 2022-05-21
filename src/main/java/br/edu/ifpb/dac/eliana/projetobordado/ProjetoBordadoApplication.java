@@ -1,7 +1,5 @@
 package br.edu.ifpb.dac.eliana.projetobordado;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -10,8 +8,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import br.edu.ifpb.dac.eliana.projetobordado.controller.BordadoController;
 import br.edu.ifpb.dac.eliana.projetobordado.controller.LinhaController;
-import br.edu.ifpb.dac.eliana.projetobordado.model.Bordado;
-import br.edu.ifpb.dac.eliana.projetobordado.model.Linha;
 
 @SpringBootApplication
 @EnableWebMvc
@@ -28,27 +24,38 @@ public class ProjetoBordadoApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-			/**
-			linhaCon.saveLinha("rosa", 262);
-			linhaCon.saveLinha("amarelo", 299);
-			linhaCon.saveLinha("verde", 253);
-			linhaCon.saveLinha("violeta", 322);
-			linhaCon.saveLinha("amareloVivo", 208);
-			linhaCon.saveLinha("verdeLoudo", 312);
+		/**
+			LinhaDTO linha1 = new LinhaDTO("rosa", 262);
+			LinhaDTO linha2 = new LinhaDTO("amarelo", 299);
+			LinhaDTO linha3 = new LinhaDTO("verde", 253);
+			LinhaDTO linha4 = new LinhaDTO("violeta", 322);
+			LinhaDTO linha5 = new LinhaDTO("amareloVivo", 208);
+			LinhaDTO linha6 = new LinhaDTO("verdeLoudo", 312);
 		
+			linhaCon.saveLinha(linha1);
+			linhaCon.saveLinha(linha2);
+			linhaCon.saveLinha(linha3);
+			linhaCon.saveLinha(linha4);
+			linhaCon.saveLinha(linha5);
+			linhaCon.saveLinha(linha6);
 			linhaCon.getLinhas();
+		*/
 			
+			linhaCon.deleteLinha(0);
+			
+			/**
 			Linha li = linhaCon.getLinha(208);
 			li.setNomeCor("Amarelo Vivo");
 			linhaCon.updateLinha(li.getIdLinha(),li);
 			
 			System.out.println(linhaCon.getLinha(208));
 		
-			linhaCon.deleteLinha(262);
-		**/
 		
+		*/
+			
 		// Esta dando erro de tranzação, pois a conexão com o banco finaliza 
-		//apois terminar as consusltas com a linhas    
+		//apois terminar as consusltas com a linhas 
+			
 		/**
 		bordadoController.bordadoSave("Logo do IFPB, frente");
 		Bordado bordado1 =bordadoController.getEmbroidery("Logo do IFPB, frente");

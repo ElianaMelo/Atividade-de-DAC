@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.edu.ifpb.dac.eliana.projetobordado.dto.BordadoDTO;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Bordado;
 import br.edu.ifpb.dac.eliana.projetobordado.model.Linha;
-import br.edu.ifpb.dac.eliana.projetobordado.model.dto.BordadoDTO;
-import br.edu.ifpb.dac.eliana.projetobordado.model.servico.BordadoService;
-import br.edu.ifpb.dac.eliana.projetobordado.model.servico.ConverterService;
-import br.edu.ifpb.dac.eliana.projetobordado.model.servico.LinhaService;
+import br.edu.ifpb.dac.eliana.projetobordado.servico.BordadoService;
+import br.edu.ifpb.dac.eliana.projetobordado.servico.ConverterService;
+import br.edu.ifpb.dac.eliana.projetobordado.servico.LinhaService;
 
 @RestController
 @RequestMapping("/projetobordado/bordado/")

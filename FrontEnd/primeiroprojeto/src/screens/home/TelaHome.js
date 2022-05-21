@@ -1,8 +1,8 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
+import {withRouter} from "react-router-dom";
 
-
-export default class TelaHome extends React.Component {
+class TelaHome extends React.Component {
 
     render() {
         return (
@@ -27,3 +27,5 @@ export default class TelaHome extends React.Component {
     }
 
 }
+
+export default withRouter(TelaHome);

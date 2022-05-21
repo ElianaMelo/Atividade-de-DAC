@@ -1,10 +1,10 @@
 import React from 'react';
 import './Login.css';
 
+import {withRouter} from "react-router-dom";
+
 import Card from "../../components/Card";
 import FormGroup from "../../components/FormGroup";
-
-import {withRouter} from 'react-router-dom';
 
 class Login extends React.Component {
 
@@ -23,8 +23,8 @@ class Login extends React.Component {
     logado = () =>{
 
         if(('monteiro@ifpb.edu.br' === this.state.email)&&('123' === this.state.password )){
-            console.log('Logado com sulcesso!');
             this.props.history.push('/');
+            console.log('Logado com sulcesso!');
         }else{
             alert('Dados incorretos!');
         }

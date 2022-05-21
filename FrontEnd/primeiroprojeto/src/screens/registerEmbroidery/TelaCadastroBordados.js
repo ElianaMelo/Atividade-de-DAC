@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
+import axios from 'axios';
 
 export default class TelaCadastroBordado extends React.Component {
 

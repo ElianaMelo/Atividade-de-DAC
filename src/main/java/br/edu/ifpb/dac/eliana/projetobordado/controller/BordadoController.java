@@ -1,6 +1,5 @@
 package br.edu.ifpb.dac.eliana.projetobordado.controller;
 
-import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,18 +42,19 @@ public class BordadoController {
 		}
 	}
 	
-	// nome ou objeto do bordado???
-	public void addLinha(int corLinha, Bordado bordado){
-		
+	@PutMapping("/{idBordado}/{codigoLinha}")
+	public void addLinha(@PathVariable("idBordado") Long idBordado, @PathVariable("codigoLinha") int codigoLinha){
 		try {
-			Linha linha = linhaService.getLine(corLinha);
-			bodadoService.addLines(linha, bordado);
+			Linha linha = linhaService.getLine(codigoLinha);
+			Bordado bordado = bodadoService.getEmbroideryId(idBordado);
+			bordado.addLinha(linha);
+			bodadoService.updateEmbroidery(idBordado, bordado);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
+	//falta fazer
 	public void getLines(String nomeBorda) {
 		Set<Linha> linhas = bodadoService.getLines(nomeBorda);
 		for(Linha linha: linhas) {
@@ -70,7 +70,7 @@ public class BordadoController {
 			return false;
 		}
 	}
-	
+	// falta fazer
 	public void deleteLines(Linha linha, Bordado bordado) {
 		try {
 			bodadoService.deleteLines(linha, bordado);
@@ -81,8 +81,7 @@ public class BordadoController {
 	}
 	
 	public Bordado getEmbroidery(String nome) {
-		
-		return bodadoService.getEmbroidery(nome);
+		return bodadoService.getEmbroideryName(nome);
 	}
 	
 	@GetMapping

@@ -15,7 +15,7 @@ public class LinhaService {
 
 	public Linha saveLine(Linha linha) throws Exception {
 
-		if (existLine(linha.getCodigoCor())) {
+		if (existLine(linha.getCodigoCor()) && linha.getIdLinha() == null) {
 			throw new Exception("Esta linha já existe");
 		} else {
 			return repositoryLine.save(linha);

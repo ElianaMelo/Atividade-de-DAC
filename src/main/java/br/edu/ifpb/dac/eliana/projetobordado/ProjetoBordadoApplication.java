@@ -1,29 +1,25 @@
 package br.edu.ifpb.dac.eliana.projetobordado;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
-import br.edu.ifpb.dac.eliana.projetobordado.controller.BordadoController;
-import br.edu.ifpb.dac.eliana.projetobordado.controller.LinhaController;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 @EnableWebMvc
-public class ProjetoBordadoApplication implements CommandLineRunner{
+public class ProjetoBordadoApplication implements WebMvcConfigurer{
 
-	@Autowired
-	private LinhaController linhaCon;
-	@Autowired
-	private BordadoController bordadoController;
-		
 	public static void main(String[] args) {
 		SpringApplication.run(ProjetoBordadoApplication.class, args);
 	}
-
 	@Override
-	public void run(String... args) throws Exception {
+	public void addCorsMappings(CorsRegistry registry) {
+		registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH");
+	}
+	
+
+	//public void run(String... args) throws Exception {
 		
 			
 		// Esta dando erro de tranzação, pois a conexão com o banco finaliza 
@@ -51,7 +47,6 @@ public class ProjetoBordadoApplication implements CommandLineRunner{
 		bordadoController.addLinha(253, bordado4);
 		bordadoController.addLinha(299, bordado4);
 		 **/
-
-	}
+	//}
 
 }

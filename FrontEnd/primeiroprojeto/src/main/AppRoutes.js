@@ -6,6 +6,8 @@ import TelaCadastroBordados from "../screens/registerEmbroidery/TelaCadastroBord
 import TelaCadastroLinha from "../screens/registerLine/TelaCadastroLinha";
 import TelaBordadoSalvo from "../screens/getEmbroidey/TelaBordadoSalvo";
 import TelaLinhaSalva from "../screens/getLine/TelaLinhaSalva";
+import UpdateLine from "../screens/updateLine/UpdateLine";
+import DeleteLine from "../screens/deleteLine/DeleteLine";
 import Login from "../screens/login/Login";
 
 function AppRoutes(){
@@ -13,8 +15,10 @@ function AppRoutes(){
         <BrowserRouter>
             <Route component={TelaHome} path="/"exact/>
             <Route component={TelaCadastroBordados} path="/TelaCadastroBordados"/>
-            <Route component={TelaCadastroLinha} path="/TelaCadastroLinha"/>
             <Route component={TelaBordadoSalvo} path="/TelaBordadoSalvo"/>
+            <Route component={TelaCadastroLinha} path="/TelaCadastroLinha"/>
+            <Route component={UpdateLine} path="/UpdateLine"/>
+            <Route component={DeleteLine} path="/DeleteLine"/>
             <Route component={TelaLinhaSalva} path="/TelaLinhaSalva"/>
             <Route component={Login} path="/Login"/>
         </BrowserRouter>

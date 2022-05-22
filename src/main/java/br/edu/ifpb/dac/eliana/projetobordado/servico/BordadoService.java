@@ -20,8 +20,12 @@ public class BordadoService {
 		return repositoryEmbroidery.save(bordado);
 	}
 	
-	public Bordado getEmbroidery(String nome){
+	public Bordado getEmbroideryName(String nome){
 		return repositoryEmbroidery.findBynome(nome);
+	}
+	
+	public Bordado getEmbroideryId(Long idBordado){
+		return repositoryEmbroidery.findByidBordado(idBordado);
 	}
 	
 	public Iterable<Bordado> getEmbroiderys(){
@@ -32,22 +36,19 @@ public class BordadoService {
 	//pensar se vai passar o objeto linha ou vai passa o id !!!
 	public Boolean addLines(Linha linha, Bordado bordado) throws Exception {
 		bordado.addLinha(linha);
-		Bordado brdd = updateEmbroidery(bordado.getIdBordado(), bordado);
-		if(brdd != null) {
-			repositoryEmbroidery.save(brdd);
-			return true;
+		if(updateEmbroidery(bordado.getIdBordado(), bordado) == null) {
+			throw new Exception("Linha Nao adiciona");
 		}	
-		throw new Exception("Linha Nao adiciona");
-		
+		return true;
 	}
 	
 	public Set<Linha> getLines(String nomeBordado){
-		Bordado emb = getEmbroidery(nomeBordado);
+		Bordado emb = getEmbroideryName(nomeBordado);
 		return emb.getLinhas();
 	}
 	
 	public Linha getLineEmbroidery(String nomeBordado, int codigoCor){
-		Bordado emb = getEmbroidery(nomeBordado);
+		Bordado emb = getEmbroideryName(nomeBordado);
 		Set<Linha> linhas = emb.getLinhas();
 		for(Linha linha:linhas) {
 			if(linha.getCodigoCor() == codigoCor) {

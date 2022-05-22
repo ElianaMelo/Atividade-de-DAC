@@ -18,8 +18,10 @@ function NavBar(props) {
                     <ul className="navbar-nav me-auto">
                         <NavBarItem href="/" label="Home"/>
                         <NavBarItem href="/TelaCadastroBordados" label="Cadastro de Bordado"/>
-                        <NavBarItem href="/TelaCadastroLinha" label="Cadastro de Linhas"/>
                         <NavBarItem href="/TelaBordadoSalvo" label="Bordado Salvo"/>
+                        <NavBarItem href="/TelaCadastroLinha" label="Cadastro de Linhas"/>
+                        <NavBarItem href="/UpdateLine" label="Atualizar Linhas"/>
+                        <NavBarItem href="/DeleteLine" label="Escluir Linhas"/>
                         <NavBarItem href="/TelaLinhaSalva" label="Linha Salva"/>
                         <NavBarItem href="/Login" label="Login"/>
 

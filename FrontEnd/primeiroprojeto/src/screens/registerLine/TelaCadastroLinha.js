@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
+import axios from 'axios';
 
 export default class App extends React.Component{
 
@@ -9,6 +10,23 @@ export default class App extends React.Component{
       result: ''
     }
   
+    create = async () => {
+      await axios.post('http://localhost:8080/projetobordado/linha',
+        {
+          nomeCor: this.state.nomeCor,
+          codigoCor: this.state.codigoCor
+        }
+      ).then(response => 
+        {
+          console.log(response);
+        }
+      ).catch(error => 
+        {
+          console.log(error.response);
+        }
+      );
+    }
+
     show = () =>{
       var result = this.state.nomeCor + ' - '+ this.state.codigoCor;
       console.log(this.state.nomeCor);
@@ -37,7 +55,7 @@ export default class App extends React.Component{
         </div>
   
         <br/>
-        <button type="button" className="btn btn-success" onClick={this.show}>Show</button>
+        <button type="button" className="btn btn-success" onClick={this.create}>Create</button>
 
         <br/>
         <div className="form-group">

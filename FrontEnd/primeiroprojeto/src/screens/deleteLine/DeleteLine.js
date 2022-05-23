@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 import axios from 'axios';
 
-export default class App extends React.Component {
+export default class DeleteLine extends React.Component {
 
     state = {
         idLinha: ''

@@ -1,8 +1,9 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 import axios from 'axios';
+import FormGroup from '../../components/FormGroup';
 
-export default class App extends React.Component{
+export default class TelaCadastroLinha extends React.Component{
 
     state = {
       nomeCor: '',
@@ -27,32 +28,21 @@ export default class App extends React.Component{
       );
     }
 
-    show = () =>{
-      var result = this.state.nomeCor + ' - '+ this.state.codigoCor;
-      console.log(this.state.nomeCor);
-      console.log(this.state.codigoCor);
-      
-      this.setState({result});
-    }
   
   render(){
     return(
       <div>
-            
-        <div className="form-group">
-          <label className="col-form-label mt-4" htmlFor="nomeCor">Nome da Cor:</label>
+        <FormGroup className label= "Nome da Cor: *"htmlFor="nomeCor">
           <input type="text" className="form-control" placeholder="nomeCor" id="nomeCor"
            value={this.state.nomeCor} onChange={(e) =>
             {this.setState({nomeCor: e.target.value})}}/>
-        </div>
-  
+        </FormGroup> 
         <br/>
-        <div className="form-group">
-          <label className="col-form-label mt-4" htmlFor="codigoCor">Codigo da Cor:</label>
-          <input type="text" className="form-control" placeholder="codigoCor" id="codigoCor"
-            value={this.state.codigoCor} onChange={(e) =>
-             {this.setState({codigoCor: e.target.value})}}/>
-        </div>
+        <FormGroup className label= "Codigo da Cor: *"htmlFor="codigoCor">
+        <input type="text" className="form-control" placeholder="codigoCor" id="codigoCor"
+           value={this.state.codigoCor} onChange={(e) =>
+            {this.setState({codigoCor: e.target.value})}}/>
+        </FormGroup>
   
         <br/>
         <button type="button" className="btn btn-success" onClick={this.create}>Create</button>

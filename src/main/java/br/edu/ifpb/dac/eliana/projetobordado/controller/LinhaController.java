@@ -35,6 +35,8 @@ public class LinhaController {
 		}
 	}
 
+	//falta retorna por Id
+	
 	@GetMapping("/{codigoCor}")
 	public ResponseEntity<Object> getLinha(@PathVariable("codigoCor") int codigoCor) {
 		try {

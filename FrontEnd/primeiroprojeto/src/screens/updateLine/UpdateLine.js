@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 import axios from 'axios';
 
-export default class App extends React.Component {
+export default class UpdateLinha extends React.Component {
 
     state = {
         idLinha: '',
@@ -24,14 +24,6 @@ export default class App extends React.Component {
             console.log(error.response);
         }
         );
-    }
-
-    show = () => {
-        var result = this.state.nomeCor + ' - ' + this.state.codigoCor;
-        console.log(this.state.nomeCor);
-        console.log(this.state.codigoCor);
-
-        this.setState({ result });
     }
 
     render() {

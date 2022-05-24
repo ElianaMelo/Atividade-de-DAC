@@ -18,7 +18,7 @@ function AppRoutes(){
             <Route component={TelaCadastroBordados} path="/TelaCadastroBordados"/>
             <Route component={TelaBordadoSalvo} path="/TelaBordadoSalvo"/>
             <Route component={TelaCadastroLinha} path="/TelaCadastroLinha"/>
-            <Route component={UpdateLine} path="/UpdateLine/:id"/>
+            <Route component={UpdateLine} path="/UpdateLine"/>
             <Route component={DeleteLine} path="/DeleteLine"/>
             <Route component={ViewLines} path="/ViewLines"/>
             <Route component={TelaLinhaSalva} path="/TelaLinhaSalva"/>

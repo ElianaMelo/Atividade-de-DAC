@@ -11,7 +11,7 @@ import LineTable from './LineTable';
 class ViewLines extends React.Component {
 
     state = {
-        lineId: '',
+        idLinha: '',
         codigoCor: '',
         lines: []
     }
@@ -19,15 +19,23 @@ class ViewLines extends React.Component {
     find = () => {
         var params = '?';
 
-        if (this.state.codigoCor != '') {
-            if (params != '?') {
+        if (this.state.idLinha !== '') {
+            if (params !== '?') {
                 params = `${params}&`;
             }
-            params = `${params}id=${this.state.codigoCor}`;
+            params = `${params}idLinha=${this.state.idLinha}`;
 
         }
 
-        axios.get(`http://localhost:8080/api/linha/${params}`)
+        if (this.state.codigoCor !== '') {
+            if (params !== '?') {
+                params = `${params}&`;
+            }
+            params = `${params}codigoCor=${this.state.codigoCor}`;
+
+        }
+
+        axios.get(`http://localhost:8080/projetobordado/linha/${params}`)
             .then(response => {
                 const lines = response.data;
                 this.setState({ lines });
@@ -38,7 +46,7 @@ class ViewLines extends React.Component {
     }
 
     delete = (lineId) => {
-        axios.delete(`http://localhost:8080/api/linha/${lineId}`
+        axios.delete(`http://localhost:8080/projetobordado/linha/${lineId}`
         ).then(response => {
             this.find();
         }
@@ -53,41 +61,39 @@ class ViewLines extends React.Component {
         this.props.history.push('/UpdateLine');
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <Card title="Consultar Linhas">
                 <div className="row">
                     <div className="col-md-6">
                         <div className="bs-component">
                             <FormGroup className label="Id: *" htmlFor="lineId">
                                 <input type="text" className="form-control" placeholder="Id da linha" id="lineId"
-                                value={this.state.lineId} onChange={(e) =>
-                                {this.setState({lineId: e.target.value})}}/>
-                            </FormGroup> 
-                            <br/>
+                                    value={this.state.lineId} onChange={(e) => { this.setState({ lineId: e.target.value }) }} />
+                            </FormGroup>
+                            <br />
                             <FormGroup className label="Codigo da Cor: *" htmlFor="CodigoCor">
                                 <input type="text" className="form-control" placeholder="Codigo da linha"
-                                 id="CodigoCor"
-                                value={this.state.codigoCor} onChange={(e) =>
-                                {this.setState({codigoCor: e.target.value})}}/>
+                                    id="CodigoCor"
+                                    value={this.state.codigoCor} onChange={(e) => { this.setState({ codigoCor: e.target.value }) }} />
                             </FormGroup>
-                            <br/>
+                            <br />
                             <button onClick={this.find}
-                            type="button"
-                            className='btn btn-success'>
+                                type="button"
+                                className='btn btn-success'>
                                 <i className='pi pi-search'></i> Buscar
                             </button>
                         </div>
                     </div>
                 </div>
-                <br/>
+                <br />
 
                 <div className='row'>
                     <div className='col-md-12'>
                         <div className='bs-component'>
-                            <LineTable lines ={this.state.lines}
-                            delete={this.delete}
-                            edit={this.edit}/>
+                            <LineTable lines={this.state.lines}
+                                delete={this.delete}
+                                edit={this.edit} />
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ public class BordadoController {
 	@PutMapping("/{idBordado}/{codigoLinha}")
 	public void addLinha(@PathVariable("idBordado") Long idBordado, @PathVariable("codigoLinha") int codigoLinha){
 		try {
-			Linha linha = linhaService.getLine(codigoLinha);
+			Linha linha = linhaService.getLineCode(codigoLinha);
 			Bordado bordado = bodadoService.getEmbroideryId(idBordado);
 			bordado.addLinha(linha);
 			bodadoService.updateEmbroidery(idBordado, bordado);

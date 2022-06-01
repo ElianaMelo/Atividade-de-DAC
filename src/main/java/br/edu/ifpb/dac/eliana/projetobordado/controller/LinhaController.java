@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifpb.dac.eliana.projetobordado.NotFoundException;
@@ -35,12 +36,10 @@ public class LinhaController {
 		}
 	}
 
-	//falta retorna por Id
-	
-	@GetMapping("/{codigoCor}")
-	public ResponseEntity<Object> getLinha(@PathVariable("codigoCor") int codigoCor) {
+	@GetMapping("/{id}")
+	public ResponseEntity<Object> getLinhaId(@PathVariable("id") Long idLinha) {
 		try {
-			Linha linha = linhaService.getLine(codigoCor);
+			Linha linha = linhaService.getLineId(idLinha);
 			return ResponseEntity.ok(linha.toDto());
 			
 		}catch(Exception e){
@@ -50,7 +49,21 @@ public class LinhaController {
 			return ResponseEntity.badRequest().body(e.getMessage());
 		}
 	}
-
+	/**
+	@GetMapping("/{codigoCor}")
+	public ResponseEntity<Object> getLinhaCode(@RequestParam(value = "codigoCor", required = true) int codigoCor ) {
+		try {
+			Linha linha = linhaService.getLineCode(codigoCor);
+			return ResponseEntity.ok(linha.toDto());
+			
+		}catch(Exception e){
+			if(e instanceof NotFoundException) {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			}
+			return ResponseEntity.badRequest().body(e.getMessage());
+		}
+	}
+*/
 	@GetMapping
 	public ResponseEntity<Iterable<Linha>> getLinhas() {
 		Iterable<Linha> linhas = linhaService.getLines();

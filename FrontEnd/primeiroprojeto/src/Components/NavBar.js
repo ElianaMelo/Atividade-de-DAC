@@ -23,7 +23,6 @@ function NavBar(props) {
                         <NavBarItem href="/UpdateLine" label="Atualizar Linhas"/>
                         <NavBarItem href="/DeleteLine" label="Escluir Linhas"/>
                         <NavBarItem href="/ViewLines" label="Linhas"/>
-                        <NavBarItem href="/TelaLinhaSalva" label="Linha Salva"/>
                         <NavBarItem href="/Login" label="Login"/>
 
                     </ul>

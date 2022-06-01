@@ -22,8 +22,16 @@ public class LinhaService {
 		}
 	}
 
-	public Linha getLine(int codigoCor) throws NotFoundException {
+	public Linha getLineCode(int codigoCor) throws NotFoundException {
 		Linha linha = repositoryLine.findBycodigoCor(codigoCor);
+		if(linha == null) {
+			 throw new NotFoundException("Linha nao encontrada");
+		}
+		return linha;
+	}
+	
+	public Linha getLineId(Long idLinha) throws NotFoundException {
+		Linha linha = repositoryLine.findByidLinha(idLinha);
 		if(linha == null) {
 			 throw new NotFoundException("Linha nao encontrada");
 		}

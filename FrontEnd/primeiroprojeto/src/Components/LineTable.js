@@ -1,20 +1,22 @@
+/* eslint-disable import/no-anonymous-default-export */
 import React from "react";
-import 'bootswatch/dist/vapor/bootstrap.css';
+
 
 export default props => {
 
+    
     const rows = props.lines.map(line => {
         return (
-            <tr className="table-primary" key={line.id}>
-                <th scope="row">{line.id}</th>
-                <td>{line.nome}</td>
+            <tr className="table-primary" key={line.idLinha}>
+                <th scope="row">{line.idLinha}</th>
+                <td>{line.nomeCor}</td>
                 <td>{line.codigoCor}</td>
                 <td>
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-secondary" 
-                        onClick={e => props.edit(line.id)}>edit</button>
+                        onClick={e => props.edit(line.idLinha)}>edit</button>
                         <button type="button" className="btn btn-secondary"
-                        onClick={e => props.delete(line.id)}>delete</button>
+                        onClick={e => props.delete(line.idLinha)}>delete</button>
                     </div>
                 </td>
 

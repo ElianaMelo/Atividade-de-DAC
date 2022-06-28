@@ -1,6 +1,8 @@
 import React from 'react';
 import 'bootswatch/dist/vapor/bootstrap.css';
 import axios from 'axios';
+import Card from "../../components/Card";
+import FormGroup from "../../components/FormGroup";
 
 export default class UpdateLinha extends React.Component {
 
@@ -29,31 +31,42 @@ export default class UpdateLinha extends React.Component {
     render() {
         return (
             <div>
-                <div className="form-group">
-                    <label className="col-form-label mt-4" htmlFor="idLinha">Id da Linha:</label>
-                    <input type="text" className="form-control" placeholder="idLinha" id="idLinha"
-                        value={this.state.idLinha} onChange={(e) => { this.setState({ idLinha: e.target.value }) }} />
+                <div className='conteiner'>
+                    <div className='row'>
+                        <div className='col-md-6' style={this.style.colMd6}>
+                            <div className='bs-docs-section'>
+                                <Card title='Login'>
+                                    <FormGroup label='Id da Linha:' htmlFor='idLinha'>
+                                        <input type='text' className='form-control' id='idLinha'
+                                            placeholder='Digite o id da linha' value={this.state.idLinha} onChange={(e) => this.setState({ idLinha: e.target.value })} />
+                                    </FormGroup>
+                                    <FormGroup label='Nome da Cor:' htmlFor='nomeCor'>
+                                        <input type='text' className='form-control' id='nomeCor'
+                                            placeholder='Digite o nome da cor' value={this.state.nomeCor} onChange={(e) => this.setState({ nomeCor: e.target.value })} />
+                                    </FormGroup>
+                                    <FormGroup label='Codigo da Cor:' htmlFor='codigoCor'>
+                                        <input type='text' className='form-control' id='codigoCor'
+                                            placeholder='Digite o codigo da cor' value={this.state.codigoCor} onChange={(e) => this.setState({ codigoCor: e.target.value })} />
+                                    </FormGroup>
+                                    <br/>
+                                    <button type="button" className="btn btn-success" onClick={this.update}>Update</button>
+                                </Card>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <div className="form-group">
-                    <label className="col-form-label mt-4" htmlFor="nomeCor">Nome da Cor:</label>
-                    <input type="text" className="form-control" placeholder="nomeCor" id="nomeCor"
-                        value={this.state.nomeCor} onChange={(e) => { this.setState({ nomeCor: e.target.value }) }} />
-                </div>
-
-                <br />
-                <div className="form-group">
-                    <label className="col-form-label mt-4" htmlFor="codigoCor">Codigo da Cor:</label>
-                    <input type="text" className="form-control" placeholder="codigoCor" id="codigoCor"
-                        value={this.state.codigoCor} onChange={(e) => { this.setState({ codigoCor: e.target.value }) }} />
-                </div>
-
-                <br />
-                <button type="button" className="btn btn-success" onClick={this.update}>Update</button>
-
 
             </div>
         )
+    }
+
+    style = {
+        colMd6: {
+            position: 'relative',
+            left: '300px',
+            top: '40px'
+
+        }
     }
 }
 

@@ -5,7 +5,7 @@ import TelaHome from "../screens/home/TelaHome";
 import TelaCadastroBordados from "../screens/registerEmbroidery/TelaCadastroBordados";
 import TelaCadastroLinha from "../screens/registerLine/TelaCadastroLinha";
 import TelaBordadoSalvo from "../screens/getEmbroidey/TelaBordadoSalvo";
-import TelaLinhaSalva from "../screens/getLine/TelaLinhaSalva";
+
 import ViewLines from "../components/ViewLines";
 import UpdateLine from "../screens/updateLine/UpdateLine";
 import DeleteLine from "../screens/deleteLine/DeleteLine";

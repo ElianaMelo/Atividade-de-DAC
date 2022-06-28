@@ -1,8 +1,6 @@
 import React from 'react';
 import './Login.css';
-
 import {withRouter} from "react-router-dom";
-
 import Card from "../../components/Card";
 import FormGroup from "../../components/FormGroup";
 
@@ -52,7 +50,8 @@ class Login extends React.Component {
                                                         placeholder='Digite a senha'
                                                         value={this.state.password} onChange={(e) => this.setState({ password: e.target.value })} />
                                                 </FormGroup>
-                                                <button className='btn btn-success' onClick={this.logado}>Logar</button>
+                                                <br/>
+                                                <button className='btn btn-success' onClick={this.logado}>Logar</button> 
                                                 <button className='btn btn-danger'>cancel</button>
                                             </fieldset>
                                         </div>
@@ -70,7 +69,8 @@ class Login extends React.Component {
     style = {
         colMd6: {
             position: 'relative',
-            left: '300px'
+            left: '300px',
+            top: '40px'
 
         }
     }

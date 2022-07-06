@@ -1,50 +1,54 @@
-import React from 'react';
-// import './ViewUser.css';
-import { withRouter } from 'react-router-dom';
+import React from "react";
+import { withRouter } from "react-router-dom";
 import axios from 'axios';
-import Card from './Card';
-import FormGroup from './FormGroup';
-import LineTable from './LineTable';
+import Card from "../../components/Card";
+import FormGroup from '../../components/FormGroup';
+import LineTable from '../../components/LineTable';
 
-class ViewLines extends React.Component {
+class ViewEmbroidey extends React.Component{
 
     state = {
-        idLinha: '',
-        codigoCor: '',
-        lines: []
+        idBordado:'',
+        nome:'',
+        linhas:{
+            idLinha: '',
+            nomeCor:'',
+            codigoCor: ''
+        }
+
     }
 
     find = () => {
         var params = '?';
 
-        if (this.state.idLinha !== '') {
+        if (this.state.idBordado !== '') {
             if (params !== '?') {
                 params = `${params}&`;
             }
-            params = `${params}idLinha=${this.state.idLinha}`;
+            params = `${params}idBordado=${this.state.idBordado}`;
 
         }
 
-        if (this.state.codigoCor !== '') {
+        if (this.state.nome !== '') {
             if (params !== '?') {
                 params = `${params}&`;
             }
-            params = `${params}codigoCor=${this.state.codigoCor}`;
+            params = `${params}nome=${this.state.nome}`;
 
         }
 
-        axios.get(`http://localhost:8080/projetobordado/linha/${params}`)
+        axios.get(`http://localhost:8080/projetobordado/bordado/${params}`)
             .then(response => {
-                const lines = response.data;
-                this.setState({ lines });
-                console.log(lines);
+                let Embroideys = response.data;
+                this.setState({ Embroideys });
+                console.log(Embroideys);
             }).catch(error => {
                 console.log(error.response);
             });
     }
 
-    delete = (lineId) => {
-        axios.delete(`http://localhost:8080/projetobordado/linha/${lineId}`
+    delete = (idBordado) => {
+        axios.delete(`http://localhost:8080/projetobordado/bordado/${idBordado}`
         ).then(response => {
             this.find();
         }
@@ -55,7 +59,7 @@ class ViewLines extends React.Component {
     }
 
     edit = () => {
-        this.props.history.push('/UpdateLine');
+        this.props.history.push('/UpdateLine');//UpdateEmbroidey
     }
 
     render() {
@@ -88,7 +92,6 @@ class ViewLines extends React.Component {
                                     </div>
                                 </div>
                                 <br />
-
                                 <div className='row'>
                                     <div className='col-md-12'>
                                         <div className='bs-component'>
@@ -114,7 +117,6 @@ class ViewLines extends React.Component {
 
         }
     }
-
 }
 
-export default withRouter(ViewLines);
+export default withRouter(ViewEmbroidey);

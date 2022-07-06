@@ -6,7 +6,7 @@ import TelaCadastroBordados from "../screens/registerEmbroidery/TelaCadastroBord
 import TelaCadastroLinha from "../screens/registerLine/TelaCadastroLinha";
 import TelaBordadoSalvo from "../screens/getEmbroidey/TelaBordadoSalvo";
 
-import ViewLines from "../components/ViewLines";
+import ViewLines from "../screens/getLine/ViewLines";
 import UpdateLine from "../screens/updateLine/UpdateLine";
 import DeleteLine from "../screens/deleteLine/DeleteLine";
 import Login from "../screens/login/Login";

@@ -38,7 +38,7 @@ export default class TelaCadastroBordado extends React.Component {
           <div className='col-md-6' style={this.style.colMd6}>
             <div className='bs-docs-section'>
               <Card title='Cadastrar Bordados'>
-                <FormGroup className label="Nome do Bordado: *" htmlFor="nomeBordado">
+                <FormGroup className label="Nome do Bordado: " htmlFor="nomeBordado">
                     <input type="text" className="form-control" placeholder="nomeBordado" id="nomeBordado"
                       value={this.state.nomeBordado} onChange={(e) => { this.setState({ nomeBordado: e.target.value }) }} />
                 </FormGroup>

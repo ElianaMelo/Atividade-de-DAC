@@ -35,15 +35,17 @@ export default class UpdateLinha extends React.Component {
                     <div className='row'>
                         <div className='col-md-6' style={this.style.colMd6}>
                             <div className='bs-docs-section'>
-                                <Card title='Login'>
+                                <Card title='Atualizar'>
                                     <FormGroup label='Id da Linha:' htmlFor='idLinha'>
                                         <input type='text' className='form-control' id='idLinha'
                                             placeholder='Digite o id da linha' value={this.state.idLinha} onChange={(e) => this.setState({ idLinha: e.target.value })} />
                                     </FormGroup>
+                                    <br />
                                     <FormGroup label='Nome da Cor:' htmlFor='nomeCor'>
                                         <input type='text' className='form-control' id='nomeCor'
                                             placeholder='Digite o nome da cor' value={this.state.nomeCor} onChange={(e) => this.setState({ nomeCor: e.target.value })} />
                                     </FormGroup>
+                                    <br />
                                     <FormGroup label='Codigo da Cor:' htmlFor='codigoCor'>
                                         <input type='text' className='form-control' id='codigoCor'
                                             placeholder='Digite o codigo da cor' value={this.state.codigoCor} onChange={(e) => this.setState({ codigoCor: e.target.value })} />

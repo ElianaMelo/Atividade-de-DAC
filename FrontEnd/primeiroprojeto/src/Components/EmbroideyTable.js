@@ -3,19 +3,18 @@ import React from "react";
 
 
 export default props => {
-
-    const rows = props.lines.map(line => {
+    
+    const rows = props.embroideys.map(embroidey => {
         return (
-            <tr className="table-primary" key={line.idLinha}>
-                <th scope="row">{line.idLinha}</th>
-                <td>{line.nomeCor}</td>
-                <td>{line.codigoCor}</td>
+            <tr className="table-primary" key={embroidey.idBordado}>
+                <th scope="row">{embroidey.idBordado}</th>
+                <td>{embroidey.nome}</td>
                 <td>
                     <div className="btn-group" role="group" aria-label="Basic example">
                         <button type="button" className="btn btn-secondary" 
-                        onClick={e => props.edit(line.idLinha)}>edit</button>
+                        onClick={e => props.edit(embroidey.idBordado)}>edit</button>
                         <button type="button" className="btn btn-secondary"
-                        onClick={e => props.delete(line.idLinha)}>delete</button>
+                        onClick={e => props.delete(embroidey.idBordado)}>delete</button>
                     </div>
                 </td>
 
@@ -28,8 +27,7 @@ export default props => {
             <thead>
                 <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Nome da Cor</th>
-                    <th scope="col">Codigo da Cor</th>
+                    <th scope="col">Nome do bordado</th>
                 </tr>
             </thead>
 

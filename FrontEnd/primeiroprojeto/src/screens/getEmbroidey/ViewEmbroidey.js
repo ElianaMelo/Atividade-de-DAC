@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import axios from 'axios';
 import Card from "../../components/Card";
 import FormGroup from '../../components/FormGroup';
-import LineTable from '../../components/LineTable';
+import EmbroideyTable from '../../components/EmbroideyTable';
 
 class ViewEmbroidey extends React.Component{
 
@@ -39,9 +39,9 @@ class ViewEmbroidey extends React.Component{
 
         axios.get(`http://localhost:8080/projetobordado/bordado/${params}`)
             .then(response => {
-                let Embroideys = response.data;
-                this.setState({ Embroideys });
-                console.log(Embroideys);
+                let embroideys = response.data;
+                this.setState({ embroideys });
+                console.log(embroideys);
             }).catch(error => {
                 console.log(error.response);
             });
@@ -68,19 +68,19 @@ class ViewEmbroidey extends React.Component{
                 <div className='row'>
                     <div className='col-md-6' style={this.style.colMd6}>
                         <div className='bs-docs-section'>
-                            <Card title="Consultar Linhas">
+                            <Card title="Consultar Bordados">
                                 <div className="row">
                                     <div className="col-md-6">
                                         <div className="bs-component">
-                                            <FormGroup className label="Id: *" htmlFor="lineId">
-                                                <input type="text" className="form-control" placeholder="Id da linha" id="lineId"
-                                                    value={this.state.lineId} onChange={(e) => { this.setState({ lineId: e.target.value }) }} />
+                                            <FormGroup className label="Id: *" htmlFor="idBordado">
+                                                <input type="text" className="form-control" placeholder="Id do bordado" id="idBordado"
+                                                    value={this.state.idBordado} onChange={(e) => { this.setState({ idBordado: e.target.value }) }} />
                                             </FormGroup>
                                             <br />
-                                            <FormGroup className label="Codigo da Cor: *" htmlFor="CodigoCor">
-                                                <input type="text" className="form-control" placeholder="Codigo da linha"
-                                                    id="CodigoCor"
-                                                    value={this.state.codigoCor} onChange={(e) => { this.setState({ codigoCor: e.target.value }) }} />
+                                            <FormGroup className label="Nome do bordado: *" htmlFor="nome">
+                                                <input type="text" className="form-control" placeholder="Nome do bordado"
+                                                    id="nome"
+                                                    value={this.state.nome} onChange={(e) => { this.setState({ nome: e.target.value }) }} />
                                             </FormGroup>
                                             <br />
                                             <button onClick={this.find}
@@ -95,7 +95,7 @@ class ViewEmbroidey extends React.Component{
                                 <div className='row'>
                                     <div className='col-md-12'>
                                         <div className='bs-component'>
-                                            <LineTable lines={this.state.lines}
+                                            <EmbroideyTable lines={this.state.embroideys}
                                                 delete={this.delete}
                                                 edit={this.edit} />
                                         </div>
